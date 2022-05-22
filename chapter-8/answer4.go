@@ -14,7 +14,10 @@ func main() {
 
 	for index, value := range s {
 		if entry, ok := m[value]; ok {
-			entry.Count += 1
+			m[value] = indexCount {
+				index: entry.index,
+				Count: entry.Count + 1,
+			}
 		} else {
 			m[value] = indexCount{index: index, Count: 1}
 		}
