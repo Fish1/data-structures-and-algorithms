@@ -2,6 +2,24 @@
 my_array = [4, 5, 9, 3, 2, 5, 6, 3]
 my_array_2 = [8, 4, 2, 3]
 
+# O(N) when the array is sorted
+# O(N^2 / 2) when the array is random or in the average case
+# O(N^2) when the array is reversed
+
+# 1 + 2 + 3 + ... + (N - 1) comparisons = O(N^2 / 2) = O(N^2)
+# O(N^2) shifts
+# O(N^2) shifts and comparisons
+
+# O(N-1) removals
+
+# N^2 + (N-1) in total
+# O(N^2 + N)
+# O(N^2)
+
+# we only care about the largest exponent
+
+
+
 def insertion_sort(array):
     for right_index in range(1, len(array)):
         gap_index = right_index
