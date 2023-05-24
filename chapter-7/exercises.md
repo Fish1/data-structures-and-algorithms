@@ -12,3 +12,9 @@ O(N * M)
 
 Worst = O(N^2)
 Best = O(N)
+
+3) O(N * M)
+
+4) O(N^3)
+
+5) O(log(N))
