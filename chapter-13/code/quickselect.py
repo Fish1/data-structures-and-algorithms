@@ -1,21 +1,22 @@
-def quicksort(array):
-    quicksort_r(array, 0, len(array) - 1)
+def quickselect(array, k):
+    quickselect_r(array, 0, len(array) - 1, k)
 
-# O(N * LOG(N))
-def quicksort_r(array, start, stop):
+def quickselect_r(array, start, stop, search):
     if start >= stop:
         return
-
     # O(N) 
     pivot = partition(array, start, stop)
 
-    # O(N / 2)
-    quicksort_r(array, 0, pivot - 1)
-    # O(N / 2)
-    quicksort_r(array, pivot + 1, stop)
+    if array[pivot] == search:
+        print("Found {} at index {}".format(search, pivot))
+        return
 
-# O(N)
-def partition(array, start, stop):
+    # O(N / 2)
+    quickselect_r(array, 0, pivot - 1, search)
+    # O(N / 2)
+    quickselect_r(array, pivot + 1, stop, search)
+
+def partition(array, start, stop, search):
     pivot = stop
     left = start
     right = pivot - 1
@@ -32,7 +33,5 @@ def partition(array, start, stop):
         else:
             array[left], array[right] = array[right], array[left]
 
-
 myarray = [0,5,2,1,6,3]
-quicksort(myarray)
-print(myarray)
+quickselect(myarray, 6)
