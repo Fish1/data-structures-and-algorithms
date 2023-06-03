@@ -13,3 +13,15 @@ Linked lists are not contiguous blocks of memory, its memory is scattered across
 In a linked list, the nodes will contain a pointer to the next node.
 
 The head node, is the first node. The tail node is the last node.
+
+Linked lists might not seem faster than arrays...
+Read O(N)
+Search O(N)
+Insert O(N)
+Delete O(N)
+
+But that are faster with insert and delete in some cases. That case being when we want to go through the list and delete many elements.
+
+If we had a list of all numbers, and we wanted to delete even ones. We simply iterate over the list and change the pointers.
+
+With an array, we would need to delete elements, and perform large shifting operations.
