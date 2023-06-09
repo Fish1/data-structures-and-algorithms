@@ -15,7 +15,7 @@ class Vertex:
             vertex.add_adjacent_vertex(self)
 
 
-def search(value: str, vertex: Vertex, visited: List[Vertex] = []) -> Vertex | None:
+def search_depth(value: str, vertex: Vertex, visited: List[Vertex] = []) -> Vertex | None:
     visited.append(vertex)
     print(vertex.value)
     if vertex.value == value:
@@ -24,10 +24,28 @@ def search(value: str, vertex: Vertex, visited: List[Vertex] = []) -> Vertex | N
         for adjacent_vertex in vertex.adjacent_vertices:
             if adjacent_vertex in visited:
                 continue
-            found = search(value, adjacent_vertex, visited)
+            found = search_depth(value, adjacent_vertex, visited)
             if found is not None:
                 return found
         return None
+
+def search_breadth(value: str, vertex: Vertex) -> Vertex | None:
+    visited = [vertex]
+    queue = [vertex]
+
+    while len(queue) > 0:
+        current_vertex = queue.pop(0)
+        print(current_vertex.value)
+        if current_vertex.value == value:
+            return current_vertex
+        for next_vertex in current_vertex.adjacent_vertices:
+            if next_vertex in visited:
+                continue
+            else:
+                visited.append(next_vertex)
+                queue.append(next_vertex)
+
+
 
 alice = Vertex("alice")
 bob = Vertex("bob")
@@ -51,7 +69,16 @@ gina.add_adjacent_verticies([derek, irena])
 irena.add_adjacent_verticies([gina])
 
 
-y = search("candy", alice)
+search = "irena"
+
+print("Depth First...")
+y = search_depth(search, alice)
 if y is not None:
     print(y.value)
+
+print("\nBreadth First...")
+
+z = search_breadth(search, alice)
+if z is not None:
+    print(z.value)
 
